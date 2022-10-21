@@ -63,12 +63,13 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
+          if-no-files-found: ignore
           name: IDCAC-firefox-signed
           path: ${{ steps.web-ext-sign.outputs.target }}
 
-      - name: Rename xpi
-        run: |
-          mv ${{ steps.web-ext-sign.outputs.target }} IDCAC-firefox.xpi
+   #   - name: Rename xpi
+   #     run: |
+  #        mv ${{ steps.web-ext-sign.outputs.target }} IDCAC-firefox.xpi
 
       - name: "Create Release"
         uses: softprops/action-gh-release@v1
@@ -78,4 +79,4 @@ jobs:
           draft: true
           files: |
             IDCAC-chrome.zip
-            IDCAC-firefox.xpi
+         #   IDCAC-firefox.xpi
